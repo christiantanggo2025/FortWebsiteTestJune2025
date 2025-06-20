@@ -23,7 +23,7 @@ export default function Arcade() {
             <div className={styles.arcadeHeroText}>
               <h1>Games for All Ages</h1>
               <p>
-                Step into a world of flashing lights, classic games, and new-age fun! The Fort's arcade offers something for everyone — from retro machines to modern multiplayer experiences.
+                Step into a world of flashing lights, classic games, and new-age fun! Our arcade offers something for everyone — from retro machines to modern multiplayer experiences.
               </p>
               <p>
                 Whether you're reliving your childhood or introducing your kids to timeless arcade magic, our game selection has it all — racing games, claw machines, basketball, air hockey, and more!
