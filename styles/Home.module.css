@@ -1,168 +1,546 @@
-.page {
-  --gray-rgb: 0, 0, 0;
-  --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
-  --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-
-  display: grid;
-  grid-template-rows: 20px 1fr 20px;
-  align-items: center;
-  justify-items: center;
-  min-height: 100svh;
-  padding: 80px;
-  gap: 64px;
-  font-family: var(--font-geist-sans);
-}
-
-@media (prefers-color-scheme: dark) {
-  .page {
-    --gray-rgb: 255, 255, 255;
-    --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
-    --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
-
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-  }
-}
-
-.main {
+/* Hero Section */
+.hero {
+  height: 100vh;
+  background: url('/hero.jpg') center center / cover no-repeat;
   display: flex;
   flex-direction: column;
-  gap: 32px;
-  grid-row-start: 2;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding-top: 80px;
+  position: relative;
 }
 
-.main ol {
-  font-family: var(--font-geist-mono);
-  padding-left: 0;
-  margin: 0;
-  font-size: 14px;
-  line-height: 24px;
-  letter-spacing: -0.01em;
-  list-style-position: inside;
+.hero h1 {
+  font-size: 64px;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 8px black;
 }
 
-.main li:not(:last-of-type) {
-  margin-bottom: 8px;
+.hero p {
+  font-size: 22px;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 4px black;
 }
 
-.main code {
-  font-family: inherit;
-  background: var(--gray-alpha-100);
-  padding: 2px 4px;
-  border-radius: 4px;
-  font-weight: 600;
-}
-
-.ctas {
+.buttons {
   display: flex;
-  gap: 16px;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.ctas a {
-  appearance: none;
-  border-radius: 128px;
-  height: 48px;
-  padding: 0 20px;
+.buttons button {
+  background-color: red;
+  color: white;
   border: none;
-  border: 1px solid transparent;
-  transition:
-    background 0.2s,
-    color 0.2s,
-    border-color 0.2s;
+  padding: 15px 30px;
+  font-size: 16px;
   cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius: 6px;
+}
+
+.buttons button:hover {
+  background-color: darkred;
+}
+
+/* Alternating Content Sections */
+.altSection {
+  padding: 100px 20px;
+  background-color: #000;
+  color: white;
+}
+
+.sectionContent {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: nowrap;
+}
+
+.reverse {
+  flex-direction: row-reverse;
+}
+
+.sectionImage {
+  flex: 1;
+  max-width: 50%;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.sectionText {
+  flex: 1;
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+.sectionText h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.sectionText p {
+  font-size: 18px;
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+.highlight {
+  color: red;
+  font-weight: bold;
+}
+
+.sectionButtons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.sectionButtons button {
+  padding: 12px 24px;
   font-size: 16px;
-  line-height: 20px;
-  font-weight: 500;
+  background-color: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.3s;
 }
 
-a.primary {
-  background: var(--foreground);
-  color: var(--background);
-  gap: 8px;
+.sectionButtons button:hover {
+  background-color: darkred;
 }
 
-a.secondary {
-  border-color: var(--gray-alpha-200);
-  min-width: 158px;
+/* Attractions Grid */
+.attractionsGrid {
+  padding: 60px 20px;
+  background-color: #000; /* 🔥 Set background to black */
+  color: white;
 }
 
-.footer {
-  grid-row-start: 3;
-  display: flex;
-  gap: 24px;
+.sectionTitle {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: white;
 }
 
-.footer a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Always 3 columns max */
+  gap: 30px;
 }
 
-.footer img {
-  flex-shrink: 0;
-}
-
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
-  }
-
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
-  }
-
-  .footer a:hover {
-    text-decoration: underline;
-    text-underline-offset: 4px;
+@media (max-width: 900px) {
+  .cardGrid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
   }
 }
 
 @media (max-width: 600px) {
-  .page {
-    padding: 32px;
-    padding-bottom: 80px;
-  }
-
-  .main {
-    align-items: center;
-  }
-
-  .main ol {
-    text-align: center;
-  }
-
-  .ctas {
-    flex-direction: column;
-  }
-
-  .ctas a {
-    font-size: 14px;
-    height: 40px;
-    padding: 0 16px;
-  }
-
-  a.secondary {
-    min-width: auto;
-  }
-
-  .footer {
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+  .cardGrid {
+    grid-template-columns: 1fr; /* 1 column on small screens */
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
+.attractionCard {
+  background-color: #1a1a1a; /* Dark grey card background for contrast */
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  padding: 16px;
+  text-align: center;
+}
+
+.cardImage {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.attractionCard h3 {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+  color: white;
+}
+
+.attractionCard p {
+  font-size: 0.95rem;
+  color: #ddd;
+  margin-bottom: 16px;
+}
+
+.attractionCard button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.attractionCard button:hover {
+  background-color: darkred;
+}
+/* Partners Section - Carousel Version of Attraction Cards */
+.partnersSection {
+  padding: 60px 20px;
+  background-color: #000;
+  color: white;
+  overflow: hidden;
+}
+
+.partnerCarousel {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 20px;
+  scroll-snap-type: x mandatory;
+  animation: scrollLoop 40s linear infinite;
+  will-change: transform;
+}
+
+.partnerCarousel::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes scrollLoop {
+  0% {
+    transform: translateX(0);
   }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.partnerCard {
+  flex: 0 0 220px;
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 300px; /* Fixed height for consistent button alignment */
+}
+
+.partnerCard h3 {
+  font-size: 1rem;
+  color: white;
+  margin: 0;
+  line-height: 1.2;
+  height: 2.6em; /* Reserve space for 2 lines */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.partnerCard p {
+  font-size: 0.9rem;
+  color: #ddd;
+  margin-bottom: 12px;
+}
+
+.partnerCard button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-top: 12px;
+}
+
+.partnerCard button:hover {
+  background-color: darkred;
+}
+
+.partnerCard img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+.partnersSection {
+  padding: 60px 20px;
+  background-color: #000;
+  color: white;
+}
+
+.partnerScrollWrapper {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.partnerScrollTrack {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  animation: scrollPartners 40s linear infinite;
+}
+
+.partnerCard {
+  flex: 0 0 220px;
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.05);
+  white-space: normal;
+}
+
+.partnerCard h3 {
+  font-size: 1rem;
+  margin-bottom: 12px;
+  color: white;
+}
+
+.partnerCard button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.partnerCard button:hover {
+  background-color: darkred;
+}
+
+@keyframes scrollPartners {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Page Content Styles */
+.mainContent {
+  padding: 40px 20px;
+  background-color: #000;
+  color: white;
+}
+
+.detailHero {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.detailSection {
+  max-width: 800px;
+  margin: 0 auto 40px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.ctaButton {
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.arcadePricingSection {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #000;
+  color: white;
+}
+
+.pricingGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.pricingCard {
+  background-color: #1a1a1a;
+  border: 2px solid white;
+  border-radius: 12px;
+  padding: 24px;
+  width: 150px;
+  text-align: center;
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.pricingCard:hover {
+  transform: scale(1.05);
+}
+
+.cardIcon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.credits {
+  font-size: 16px;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 1px;
+}
+
+.bestValue {
+  border-color: gold;
+  box-shadow: 0 0 10px gold;
+}
+
+.bestLabel {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  font-weight: bold;
+  color: gold;
+}
+.arcadeHeroSection {
+  padding: 120px 20px 60px 20px; /* ⬅️ added top padding to push below navbar */
+  background-color: #000;
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.arcadeHeroCard {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  width: 100%;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+.arcadeHeroImage {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+}
+
+.arcadeHeroImage img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 4px solid white;
+  border-radius: 12px;
+}
+
+.arcadeHeroImage img {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  display: block;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+
+.arcadeHeroText {
+  flex: 1;
+  min-width: 300px;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+
+.arcadeHeroText h1 {
+  font-size: 2.75rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+@media (max-width: 768px) {
+  .sectionContent {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  .sectionImage,
+  .sectionText {
+    max-width: 100%;
+  }
+  .menuWrapper {
+  padding: 60px 20px;
+  background-color: #000;
+  color: white;
+}
+
+.menuTabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.menuTab {
+  padding: 10px 16px;
+  font-weight: bold;
+  border: 2px solid white;
+  background: transparent;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.menuTab:hover {
+  background-color: white;
+  color: black;
+}
+
+.activeTab {
+  background-color: red;
+  color: white;
+  border-color: red;
+}
+
+.menuContent {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
 }
