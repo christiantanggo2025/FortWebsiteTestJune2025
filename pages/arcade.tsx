@@ -18,7 +18,10 @@ export default function Arcade() {
         <section className={styles.arcadeHeroSection}>
           <div className={styles.arcadeHeroCard}>
             <div className={styles.arcadeHeroImage}>
-              <img src="/arcade.jpg" alt="Arcade" />
+              import Image from 'next/image'
+
+              <Image src="/arcade.jpg" alt="Arcade" width={800} height={600} />
+
             </div>
             <div className={styles.arcadeHeroText}>
               <h1>Games for All Ages</h1>
@@ -26,7 +29,7 @@ export default function Arcade() {
                 Step into a world of flashing lights, classic games, and new-age fun! Our arcade offers something for everyone — from retro machines to modern multiplayer experiences.
               </p>
               <p>
-                Whether you're reliving your childhood or introducing your kids to timeless arcade magic, our game selection has it all — racing games, claw machines, basketball, air hockey, and more!
+                Whether you are reliving your childhood or introducing your kids to timeless arcade magic, our game selection has it all — racing games, claw machines, basketball, air hockey, and more!
               </p>
               <p>
                 Rack up those tickets and trade them in for awesome prizes at our prize center. The more you play, the more you win!
