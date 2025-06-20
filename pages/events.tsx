@@ -6,7 +6,18 @@ import styles from '../styles/Events.module.css';
 import Navbar from '../components/Navbar';
 
 export default function EventsPage() {
-  const [events, setEvents] = useState<any[]>([]);
+  interface EventItem {
+    title: string;
+    description: string;
+    date: string;
+    is_cancelled?: boolean;
+    location?: string;
+    stage?: string;
+    event_link?: string;
+    image_url?: string;
+  }
+
+  const [events, setEvents] = useState<EventItem[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
 

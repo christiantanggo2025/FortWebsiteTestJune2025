@@ -7,7 +7,13 @@ import styles from '../styles/Home.module.css';
 import { useEffect, useState, useRef } from 'react';
 
 export default function Home() {
-  const [nextEvent, setNextEvent] = useState<any | null>(null);
+  interface EventData {
+    title: string;
+    description: string;
+    image_url?: string;
+  }
+
+  const [nextEvent, setNextEvent] = useState<EventData | null>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     fetchNextEvent();
