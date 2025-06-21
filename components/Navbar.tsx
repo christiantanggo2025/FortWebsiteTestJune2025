@@ -83,6 +83,18 @@ export default function Navbar() {
         <li>
           <Link href="/events">Events</Link>
         </li>
+
+        {/* ✅ NEW HARVEST HOST LINK */}
+        <li>
+          <a
+            href="https://www.harvesthosts.com/hosts/ontario/KzCZB2Ma054ISMtjnHWL?source=map"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Harvest Host
+          </a>
+        </li>
+
         <li>
           <a
             href="#contact"

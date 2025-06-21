@@ -39,6 +39,11 @@ export default function Footer() {
             <p>📍 689 Texas Road, Amherstburg, ON</p>
             <p>📞 <a href="tel:5197364382">519-736-4382</a></p>
             <p>✉️ <a href="mailto:info@thefortfuncenter.ca">info@thefortfuncenter.ca</a></p>
+			<p>
+ 			 📝 <a href="mailto:info@thefortfuncenter.ca?subject=Applying%20For%20A%20Position">
+ 			   Apply To Work At The Fort
+ 			 </a>
+			</p>
           </div>
         </div>
 
