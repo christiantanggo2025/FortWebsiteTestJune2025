@@ -10,12 +10,10 @@ export default function Navbar() {
 
   const scrollToSection = (id: string) => {
     if (typeof window === 'undefined') return;
-
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
     } else {
-      // If not on homepage, set query param and redirect to /
       router.push(`/#${id}`);
     }
   };
@@ -49,14 +47,38 @@ export default function Navbar() {
       <ul className={styles.navLinks}>
         <li>
           <a
-            href="#restaurant"
+            href="#ourNextEvent"
             className={styles.anchorLink}
             onClick={(e) => {
               e.preventDefault();
-              scrollToSection('restaurant');
+              scrollToSection('ourNextEvent');
+            }}
+          >
+            Events
+          </a>
+        </li>
+        <li>
+          <a
+            href="#foodAndDrink"
+            className={styles.anchorLink}
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection('foodAndDrink');
             }}
           >
             Restaurant
+          </a>
+        </li>
+        <li>
+          <a
+            href="#giftCards"
+            className={styles.anchorLink}
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection('giftCards');
+            }}
+          >
+            Gift Cards
           </a>
         </li>
         <li>
@@ -73,20 +95,6 @@ export default function Navbar() {
         </li>
         <li>
           <a
-            href="https://bookeo.com/thefort-amherstburg"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Booking
-          </a>
-        </li>
-        <li>
-          <Link href="/events">Events</Link>
-        </li>
-
-        {/* ✅ NEW HARVEST HOST LINK */}
-        <li>
-          <a
             href="https://www.harvesthosts.com/hosts/ontario/KzCZB2Ma054ISMtjnHWL?source=map"
             target="_blank"
             rel="noopener noreferrer"
@@ -94,17 +102,25 @@ export default function Navbar() {
             Harvest Host
           </a>
         </li>
-
         <li>
           <a
-            href="#contact"
+            href="#footer"
             className={styles.anchorLink}
             onClick={(e) => {
               e.preventDefault();
-              scrollToSection('contact');
+              scrollToSection('footer');
             }}
           >
             Contact
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://bookeo.com/thefort-amherstburg"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Booking
           </a>
         </li>
       </ul>

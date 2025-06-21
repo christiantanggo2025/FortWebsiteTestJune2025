@@ -1,3 +1,14 @@
+const buttonStyle: React.CSSProperties = {
+  backgroundColor: '#ff0000',
+  color: '#fff',
+  padding: '16px',
+  fontSize: '18px',
+  textAlign: 'center',
+  textDecoration: 'none',
+  borderRadius: '8px',
+  fontWeight: 'bold'
+};
+
 export default function MenuTabs() {
   return (
     <div style={{
@@ -49,14 +60,3 @@ export default function MenuTabs() {
     </div>
   );
 }
-
-const buttonStyle = {
-  backgroundColor: '#ff0000',
-  color: '#fff',
-  padding: '16px',
-  fontSize: '18px',
-  textAlign: 'center',
-  textDecoration: 'none',
-  borderRadius: '8px',
-  fontWeight: 'bold'
-};

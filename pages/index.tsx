@@ -71,7 +71,7 @@ export default function Home() {
 
   const sections = [
     {
-      id: 'restaurant',
+      id: 'foodAndDrink',
       title: 'Food & Drink',
       image: '/food.jpg',
       content: (
@@ -106,7 +106,7 @@ export default function Home() {
       ]
     },
     {
-      id: 'giftcards',
+      id: 'giftCards',
       title: 'Gift Cards',
       image: '/gift-card.png',
       content: (
@@ -160,7 +160,7 @@ export default function Home() {
       </div>
 	  
 	  {nextEvent && (
- 	   <section className={styles.altSection}>
+ 	   <section id="ourNextEvent" className={styles.altSection}>
  	     <div
   	      className={`${styles.sectionContent} ${styles.reverse}`}
  	       style={{ alignItems: 'stretch' }}
@@ -191,6 +191,11 @@ export default function Home() {
       	        <button>Book Now</button>
       	      </a>
       	    </div>
+			<div className={styles.sectionButtons} style={{ marginTop: '10px' }}>
+ 			 <a href="/events">
+ 			   <button>All Events</button>
+ 			 </a>
+			</div>
      	   </div>
    	   </div>
  	   </section>
@@ -325,7 +330,7 @@ export default function Home() {
         </div>
       </section>
 
-      <div id="contact">
+      <div id="footer">
         <Footer />
       </div>
     </>
