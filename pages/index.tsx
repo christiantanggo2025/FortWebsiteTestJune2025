@@ -5,6 +5,7 @@ import Footer from '../components/Footer';
 import { supabase } from '../lib/supabase';
 import styles from '../styles/Home.module.css';
 import { useEffect, useState, useRef } from 'react';
+import Link from 'next/link';
 
 export default function Home() {
   interface EventData {
@@ -192,9 +193,9 @@ export default function Home() {
       	      </a>
       	    </div>
 			<div className={styles.sectionButtons} style={{ marginTop: '10px' }}>
- 			 <a href="/events">
- 			   <button>All Events</button>
- 			 </a>
+ 			 <Link href="/events">
+  			  <button>All Events</button>
+ 			 </Link>
 			</div>
      	   </div>
    	   </div>
