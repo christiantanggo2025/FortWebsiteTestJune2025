@@ -22,7 +22,7 @@ export default function Bowling() {
             <div className={styles.arcadeHeroText}>
               <h1>Bowling by the Hour</h1>
               <p>
-                Whether you're planning a fun family outing, a friendly competition, or a birthday bash — our lanes are ready! Enjoy hourly bowling rates for kids and adults with affordable shoe rentals.
+                Whether you are planning a fun family outing, a friendly competition, or a birthday bash — our lanes are ready! Enjoy hourly bowling rates for kids and adults with affordable shoe rentals.
               </p>
               <p>
                 Book online or walk in anytime. We recommend reserving for weekends and holidays!
