@@ -8,7 +8,7 @@ import { supabase } from '../supabase';
 import { FaMedal } from 'react-icons/fa';
 
 export default function VolleyballPage() {
-  const [schedule, setSchedule] = useState([]);
+  const [schedule, setSchedule] = useState<any[]>([]);
   const [standings, setStandings] = useState([]);
   const [expandedDates, setExpandedDates] = useState([]);
   const [expandStandings, setExpandStandings] = useState(false);
