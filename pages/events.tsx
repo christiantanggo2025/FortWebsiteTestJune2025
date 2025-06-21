@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { supabase } from '../lib/supabase';
 import styles from '../styles/Events.module.css';
 import Navbar from '../components/Navbar';
+import Image from 'next/image';
 
 export default function EventsPage() {
   interface EventItem {
@@ -87,10 +88,13 @@ export default function EventsPage() {
                 </div>
 
                 <div className={styles.eventContent}>
-                  <img
+                  <Image
                     src={event.image_url || '/placeholder.jpg'}
                     alt={event.title}
                     className={styles.thumbnail}
+					layout="responsive"
+                    width={400}
+                    height={300}
                   />
                   <div className={styles.eventDetails}>
                     <h3>{event.title} {isCancelled ? '(Cancelled)' : ''}</h3>

@@ -6,6 +6,7 @@ import { supabase } from '../lib/supabase';
 import styles from '../styles/Home.module.css';
 import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image'; // Add this near the top if missing
 
 export default function Home() {
   interface EventData {
@@ -205,7 +206,13 @@ export default function Home() {
       {sections.map((section, index) => (
         <section key={section.id} id={section.id} className={styles.altSection}>
           <div className={`${styles.sectionContent} ${index % 2 === 1 ? styles.reverse : ''}`}>
-            <img src={section.image} alt={section.title} className={styles.sectionImage} />
+            <Image
+              src={section.image}
+              alt={section.title}
+              className={styles.sectionImage}
+              width={600}
+              height={400}
+            />
             <div className={styles.sectionText}>
               <h2>{section.title}</h2>
               {section.content}
@@ -270,7 +277,13 @@ export default function Home() {
             }
           ].map((card, index) => (
             <div key={index} className={styles.attractionCard}>
-              <img src={card.image} alt={card.title} className={styles.cardImage} />
+              <Image
+                src={card.image}
+                alt={card.title}
+                className={styles.cardImage}
+                width={300}
+                height={200}
+              />
               <h3>{card.title}</h3>
               <p>{card.description}</p>
               <a
@@ -312,10 +325,12 @@ export default function Home() {
           <div className={styles.partnerScrollTrack} ref={carouselRef}>
             {[...partnerData, ...partnerData].map((partner, index) => (
               <div key={index} className={styles.partnerCard}>
-                <img
+                <Image
                   src={`/partners/${partner.image}`}
                   alt={partner.title}
                   className={styles.partnerImage}
+                  width={200}
+                  height={100}
                 />
                 <h3>{partner.title}</h3>
                 {partner.link ? (
