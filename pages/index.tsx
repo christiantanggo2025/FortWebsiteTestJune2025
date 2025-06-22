@@ -184,20 +184,14 @@ export default function Home() {
    	       <h2>Our Next Event</h2>
    	       <p style={{ fontWeight: 'normal', marginTop: '-10px' }}>{nextEvent.title}</p>
     	      <p>{nextEvent.description}</p>
-    	      <div className={styles.sectionButtons}>
-    	        <a
-     	         href="https://bookeo.com/thefort-amherstburg"
-     	         target="_blank"
-     	         rel="noopener noreferrer"
-      	      >
+    	      <div className={styles.sectionButtons} style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+     	       <a href="https://bookeo.com/thefort-amherstburg" target="_blank" rel="noopener noreferrer">
       	        <button>Book Now</button>
       	      </a>
-      	    </div>
-			<div className={styles.sectionButtons} style={{ marginTop: '10px' }}>
- 			 <Link href="/events">
-  			  <button>All Events</button>
- 			 </Link>
-			</div>
+     	       <Link href="/events">
+     	         <button>All Events</button>
+     	       </Link>
+    	      </div>
      	   </div>
    	   </div>
  	   </section>

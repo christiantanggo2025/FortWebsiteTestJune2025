@@ -18,10 +18,15 @@ export default function VolleyballPage() {
   };
 
   const [schedule, setSchedule] = useState<Match[]>([]);
-  const [standings, setStandings] = useState([]);
-  const [expandedDates, setExpandedDates] = useState([]);
+  type Standing = {
+    team_name: string;
+   points: number;
+  };
+
+  const [standings, setStandings] = useState<Standing[]>([]);
+  const [expandedDates, setExpandedDates] = useState<string[]>([]);
   const [expandStandings, setExpandStandings] = useState(false);
-  const [bannerStatus, setBannerStatus] = useState(null);
+  const [bannerStatus, setBannerStatus] = useState<"games" | "practice" | "cancelled" | "pending" | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -51,7 +56,7 @@ export default function VolleyballPage() {
     fetchData();
   }, []);
 
-  const groupedSchedule = schedule.reduce((acc, match) => {
+  const groupedSchedule = schedule.reduce((acc: { [key: string]: Match[] }, match: Match) => {
     const date = match.match_date;
     if (!acc[date]) acc[date] = [];
     acc[date].push(match);

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 const buttonStyle: React.CSSProperties = {
   backgroundColor: '#ff0000',
   color: '#fff',
@@ -26,14 +27,12 @@ export default function MenuTabs() {
         flex: '1 1 400px',
         maxWidth: '500px',
       }}>
-        <img
+        <Image
           src="/images/menu-picture.jpg"
           alt="Menu"
-          style={{
-            width: '100%',
-            height: 'auto',
-            borderRadius: '12px'
-          }}
+          width={400}
+          height={300}
+          style={{ width: '100%', height: 'auto' }}
         />
       </div>
 

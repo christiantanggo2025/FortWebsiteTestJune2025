@@ -1,118 +1,96 @@
 // pages/events.tsx
-import { useEffect, useState } from 'react';
 import Head from 'next/head';
-import { supabase } from '../lib/supabase';
-import styles from '../styles/Events.module.css';
-import Navbar from '../components/Navbar';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
+import styles from '../styles/Events.module.css';
+import { supabase } from '../supabase';
 
-export default function EventsPage() {
-  interface EventItem {
-    title: string;
-    description: string;
-    date: string;
-    is_cancelled?: boolean;
-    location?: string;
-    stage?: string;
-    event_link?: string;
-    image_url?: string;
-  }
+interface EventItem {
+  id: string;
+  title: string;
+  description: string;
+  image_url: string;
+  date: string;
+}
 
+export default function Events() {
   const [events, setEvents] = useState<EventItem[]>([]);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
-
-  const months = [
-    'January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December'
-  ];
+  const [selectedMonth, setSelectedMonth] = useState('');
 
   useEffect(() => {
+    const fetchEvents = async () => {
+      const { data, error } = await supabase
+        .from('events')
+        .select('id, title, description, image_url, date')
+        .order('date', { ascending: true });
+
+      if (!error && data) {
+        setEvents(data);
+      } else {
+        console.error('Error fetching events:', error);
+      }
+    };
+
     fetchEvents();
   }, []);
 
-  const fetchEvents = async () => {
-    const { data, error } = await supabase
-      .from('events')
-      .select('*')
-      .order('date', { ascending: true });
-
-    if (!error) setEvents(data || []);
-  };
-
-  const filteredEvents = events.filter(event => {
-    const matchTitle = event.title.toLowerCase().includes(searchQuery.toLowerCase());
-    const eventMonth = new Date(event.date).getMonth();
-    return matchTitle && eventMonth === selectedMonth;
-  });
+  const filteredEvents = selectedMonth
+    ? events.filter((event) =>
+        event.date && event.date.startsWith(selectedMonth)
+      )
+    : events;
 
   return (
     <>
       <Head>
         <title>Events Calendar | The Fort</title>
       </Head>
-      <Navbar />
-      <div className={styles.page}>
-        <h1 className={styles.heading}>Events Calendar</h1>
+      <main className={styles.page}>
+        <h1 className={styles.title}>Our Events</h1>
 
-        <div className={styles.controls}>
-          <input
-            type="text"
-            placeholder="Search events..."
-            value={searchQuery}
-            onChange={e => setSearchQuery(e.target.value)}
-            className={styles.searchInput}
-          />
-
-          <select
-            value={selectedMonth}
-            onChange={e => setSelectedMonth(Number(e.target.value))}
-            className={styles.monthSelect}
-          >
-            {months.map((month, i) => (
-              <option key={i} value={i}>{month}</option>
-            ))}
-          </select>
+        <div className={styles.dropdown}>
+          <label>
+            Filter by month:{' '}
+            <input
+              type="month"
+              value={selectedMonth}
+              onChange={(e) => setSelectedMonth(e.target.value)}
+            />
+          </label>
         </div>
 
-        <div className={styles.eventList}>
-          {filteredEvents.map((event, index) => {
-            const date = new Date(event.date);
-            const isCancelled = event.is_cancelled;
+        {filteredEvents.map((event) => (
+          <div className={styles.eventCard} key={event.id}>
+            <div className={styles.dateBox}>
+              <p>
+                {event.date
+                  ? new Date(event.date).toLocaleDateString('en-CA', {
+                      year: 'numeric',
+                      month: 'short',
+                      day: 'numeric',
+                    })
+                  : 'Date TBD'}
+              </p>
+            </div>
 
-            return (
-              <div key={index} className={`${styles.eventCard} ${isCancelled ? styles.cancelled : ''}`}>
-                <div className={styles.dateBox}>
-                  <div className={styles.month}>{months[date.getMonth()].substring(0, 3)}</div>
-                  <div className={styles.day}>{date.getDate()}</div>
-                </div>
+            <div className={styles.imageBox}>
+              <Image
+                src={event.image_url || '/placeholder.jpg'}
+                alt={event.title}
+                width={400}
+                height={300}
+                style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
+                className={styles.image}
+              />
+            </div>
 
-                <div className={styles.eventContent}>
-                  <Image
-                    src={event.image_url || '/placeholder.jpg'}
-                    alt={event.title}
-                    className={styles.thumbnail}
-					layout="responsive"
-                    width={400}
-                    height={300}
-                  />
-                  <div className={styles.eventDetails}>
-                    <h3>{event.title} {isCancelled ? '(Cancelled)' : ''}</h3>
-                    <p>{event.description}</p>
-                    {event.location && <p>📍 {event.location}</p>}
-                    {event.stage && <p>🎤 Live on {event.stage} Stage</p>}
-                    {event.event_link && (
-                      <a href={event.event_link} target="_blank" rel="noopener noreferrer">
-                        Additional Details →
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
+            <div className={styles.textBox}>
+              <h2>{event.title}</h2>
+              <p>{event.description}</p>
+            </div>
+          </div>
+        ))}
+      </main>
     </>
   );
 }
