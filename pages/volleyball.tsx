@@ -70,21 +70,6 @@ export default function VolleyballPage() {
     );
   };
 
-  const renderBannerMessage = () => {
-    switch (bannerStatus) {
-      case 'games':
-        return 'Games Tonight';
-      case 'practice':
-        return 'Practice Night';
-      case 'cancelled':
-        return 'Games Cancelled';
-      case 'pending':
-        return 'Games Pending Weather';
-      default:
-        return 'No Games Scheduled For Today';
-    }
-  };
-
   return (
     <>
       <Head>
