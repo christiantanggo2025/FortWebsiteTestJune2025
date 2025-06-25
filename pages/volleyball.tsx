@@ -27,7 +27,6 @@ export default function VolleyballPage() {
   const [standings, setStandings] = useState<Standing[]>([]);
   const [expandedDates, setExpandedDates] = useState<string[]>([]);
   const [expandStandings, setExpandStandings] = useState(false);
-  const [bannerStatus, setBannerStatus] = useState<"games" | "practice" | "cancelled" | "pending" | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -51,7 +50,6 @@ export default function VolleyballPage() {
 
       setSchedule(matchData || []);
       setStandings(standingsData || []);
-      setBannerStatus(bannerData?.[0]?.status || null);
     };
 
     fetchData();
