@@ -7,34 +7,63 @@ export default function VolleyballBanner() {
   const [bannerColor, setBannerColor] = useState('#ccc');
 
   useEffect(() => {
-    const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+    const today = new Date();
+    const todayISO = today.toISOString().split('T')[0];
+    const dayName = today.toLocaleDateString('en-US', { weekday: 'long' });
+
+    console.log('📅 Today is:', todayISO);
+    console.log('🗓️ Day of week:', dayName);
 
     const fetchBanner = async () => {
-      const { data, error } = await supabase
-        .from('volleyball_banners')
-        .select('*')
-        .eq('banner_date', today)
-        .single();
+      try {
+        // Step 1: Check volleyball_banners
+        const { data: bannerData, error: bannerError } = await supabase
+          .from('volleyball_banners')
+          .select('*')
+          .eq('banner_date', todayISO)
+          .single();
 
-      if (error || !data) {
-        setBannerText('No Games Scheduled For Today');
-        setBannerColor('#ccc');
-        return;
-      }
+        if (bannerError) console.error('⚠️ Error fetching bannerData:', bannerError);
+        else console.log('🧾 volleyball_banners:', bannerData);
 
-      const status = data.status || '';
-      if (status === 'games') {
-        setBannerText('Games Are On Tonight!');
-        setBannerColor('green');
-      } else if (status === 'practice') {
-        setBannerText('Practice Night Only');
-        setBannerColor('orange');
-      } else if (status === 'cancelled') {
-        setBannerText('Games Cancelled Due to Weather');
-        setBannerColor('red');
-      } else {
-        setBannerText('No Games Scheduled For Today');
-        setBannerColor('#ccc');
+        if (bannerData?.status === 'cancelled') {
+          console.log('❌ Banner override: Cancelled');
+          setBannerText('Games Cancelled Due to Weather');
+          setBannerColor('red');
+          return;
+        } else if (bannerData?.status === 'practice') {
+          console.log('🟠 Banner override: Practice only');
+          setBannerText('Practice Night Only');
+          setBannerColor('orange');
+          return;
+        } else if (bannerData?.status === 'pending') {
+          console.log('🟡 Banner override: Pending weather');
+          setBannerText('Games Pending Weather');
+          setBannerColor('#FFEB3B');
+          return;
+        }
+
+        // Step 2: Check if teams play today
+        const { data: teamsToday, error: teamError } = await supabase
+          .from('teams')
+          .select('*')
+          .ilike('day', `%${dayName}%`);
+
+        if (teamError) {
+          console.error('⚠️ Error fetching teams:', teamError);
+        } else {
+          console.log('✅ Teams scheduled today:', teamsToday);
+        }
+
+        if (teamsToday && teamsToday.length > 0) {
+          setBannerText('Games Are On Tonight!');
+          setBannerColor('green');
+        } else {
+          setBannerText('No Games Scheduled For Today');
+          setBannerColor('#ccc');
+        }
+      } catch (err) {
+        console.error('🚨 Unexpected error in fetchBanner():', err);
       }
     };
 

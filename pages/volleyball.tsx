@@ -6,6 +6,7 @@ import Footer from '../components/Footer';
 import styles from '../styles/Home.module.css';
 import { supabase } from '../supabase';
 import { FaMedal } from 'react-icons/fa';
+import VolleyballBanner from '../components/VolleyballBanner';
 
 export default function VolleyballPage() {
   type Match = {
@@ -91,7 +92,7 @@ export default function VolleyballPage() {
       </Head>
       <Header />
 
-      <main className={styles.volleyballPage}>
+      <main className={styles.volleyballPage} style={{ paddingBottom: '80px' }}>
         {/* Hero Image */}
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
           <div style={{ width: '100%', maxWidth: '1020px', margin: '0 auto' }}>
@@ -109,27 +110,7 @@ export default function VolleyballPage() {
             />
           </div>
           <div style={{ width: '100%', maxWidth: '1020px', margin: '12px auto 0 auto' }}>
-            <div
-              style={{
-                fontWeight: 'bold',
-                padding: '12px 20px',
-                borderRadius: '8px',
-                textAlign: 'center',
-                color: '#000',
-                backgroundColor:
-                  bannerStatus === 'games'
-                    ? '#4CAF50'
-                    : bannerStatus === 'cancelled'
-                    ? '#F44336'
-                    : bannerStatus === 'practice'
-                    ? '#2196F3'
-                    : bannerStatus === 'pending'
-                    ? '#FFEB3B'
-                    : '#BDBDBD'
-              }}
-            >
-              {renderBannerMessage()}
-            </div>
+            <VolleyballBanner />
           </div>
         </div>
 
