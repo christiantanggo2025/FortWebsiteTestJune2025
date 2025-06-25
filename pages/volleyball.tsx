@@ -43,11 +43,6 @@ export default function VolleyballPage() {
         .select('*')
         .order('points', { ascending: false });
 
-      const { data: bannerData } = await supabase
-        .from('volleyball_banners')
-        .select('*')
-        .eq('banner_date', today);
-
       setSchedule(matchData || []);
       setStandings(standingsData || []);
     };
