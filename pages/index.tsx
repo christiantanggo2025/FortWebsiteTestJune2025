@@ -22,26 +22,6 @@ export default function Home() {
     fetchNextEvent();
   }, []);
 
-  useEffect(() => {
-    const scrollContainer = carouselRef.current;
-    if (!scrollContainer) return;
-
-    let animationFrameId: number;
-    const scrollSpeed = 0.5;
-
-    const autoScroll = () => {
-      scrollContainer.scrollLeft += scrollSpeed;
-      if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth / 2) {
-        scrollContainer.scrollLeft = 0;
-      }
-      animationFrameId = requestAnimationFrame(autoScroll);
-    };
-
-    animationFrameId = requestAnimationFrame(autoScroll);
-
-    return () => cancelAnimationFrame(animationFrameId);
-  }, []);
-
   const fetchNextEvent = async () => {
     const today = new Date().toISOString();
     const { data, error } = await supabase
@@ -158,6 +138,9 @@ export default function Home() {
           >
             Explore Attractions
           </button>
+		  <a href="https://waivers.tanggo.ca/waiver/step2" target="_blank" rel="noopener noreferrer">
+ 		   <button>Sign Our Waiver</button>
+		  </a>
         </div>
       </div>
 	  
@@ -315,29 +298,54 @@ export default function Home() {
       {/* Partners Carousel */}
       <section id="partners" className={styles.partnersSection}>
         <h2 className={styles.sectionTitle}>Our Partners</h2>
-        <div className={styles.partnerScrollWrapper}>
-          <div className={styles.partnerScrollTrack} ref={carouselRef}>
-            {[...partnerData, ...partnerData].map((partner, index) => (
-              <div key={index} className={styles.partnerCard}>
-                <Image
-                  src={`/partners/${partner.image}`}
-                  alt={partner.title}
-                  className={styles.partnerImage}
-                  width={200}
-                  height={100}
-                />
-                <h3>{partner.title}</h3>
-                {partner.link ? (
-                  <a href={partner.link} target="_blank" rel="noopener noreferrer">
-                    <button>Visit</button>
-                  </a>
-                ) : (
-                  <button onClick={() => alert(partner.alert)}>Learn More</button>
-                )}
-              </div>
-            ))}
+        <div className={styles.partnerSectionContainer}>
+          <div className={styles.carouselContainer}>
+            <button
+              className={`${styles.carouselButton} ${styles.leftButton}`}
+              onClick={() => {
+                carouselRef.current?.scrollBy({ left: -300, behavior: "smooth" });
+              }}
+            >
+              &#10094;
+            </button>
+
+            <div className={styles.partnerScrollTrack} ref={carouselRef}>
+              {[...partnerData, ...partnerData].map((partner, index) => (
+                <div key={index} className={styles.partnerCard}>
+                  <div className={styles.cardSwipeHint}>
+                    <span className={styles.leftSwipe}>&#x25C0;</span>
+                    <span className={styles.rightSwipe}>&#x25B6;</span>
+                  </div>
+                  <Image
+                    src={`/partners/${partner.image}`}
+                    alt={partner.title}
+                    className={styles.partnerImage}
+                    width={200}
+                    height={100}
+                  />
+                  <h3>{partner.title}</h3>
+                  {partner.link ? (
+                    <a href={partner.link} target="_blank" rel="noopener noreferrer">
+                      <button>Visit</button>
+                    </a>
+                  ) : (
+                    <button onClick={() => alert(partner.alert)}>Learn More</button>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            <button
+              className={`${styles.carouselButton} ${styles.rightButton}`}
+              onClick={() => {
+                carouselRef.current?.scrollBy({ left: 300, behavior: "smooth" });
+              }}
+            >
+              &#10095;
+            </button>
           </div>
         </div>
+
       </section>
 
       <div id="footer">

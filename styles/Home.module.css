@@ -299,9 +299,16 @@
 
 .partnerScrollTrack {
   display: flex;
-  flex-wrap: nowrap;
   gap: 20px;
-  animation: scrollPartners 40s linear infinite;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain; /* Prevents blue arrows from iOS */
+}
+
+.partnerScrollTrack::-webkit-scrollbar {
+  display: none;
 }
 
 .partnerCard {
@@ -874,6 +881,159 @@
 
 .card button:hover {
   background-color: darkred;
+}
+.carouselNav {
+  background-color: #333;
+  color: white;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0 15px;
+  z-index: 1;
+  transition: background-color 0.2s;
+}
+
+.carouselNav:hover {
+  background-color: #555;
+}
+.carouselOverlayWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.partnerScrollTrack {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 20px 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.partnerScrollTrack::-webkit-scrollbar {
+  display: none;
+}
+
+.carouselNav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 3rem;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: none;
+  z-index: 2;
+  padding: 0 15px;
+  cursor: pointer;
+}
+
+.leftArrow {
+  left: 0;
+}
+
+.rightArrow {
+  right: 0;
+}
+
+.carouselNav:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.partnerSectionContainer {
+  position: relative;
+  margin: 60px 0;
+  text-align: center;
+}
+
+.carouselContainer {
+  position: relative;
+  overflow: hidden;
+}
+
+.partnerScrollTrack {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding: 20px 0;
+  scrollbar-width: none;
+}
+
+.partnerScrollTrack::-webkit-scrollbar {
+  display: none;
+}
+
+.carouselButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: none;
+  font-size: 3rem;
+  color: white;
+  cursor: pointer;
+  padding: 10px 15px;
+}
+
+.leftButton {
+  left: 0;
+}
+
+.rightButton {
+  right: 0;
+}
+
+.carouselButton:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.cardSwipeHint {
+  position: absolute;
+  top: 6px;
+  left: 8px;
+  right: 8px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.4rem;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 2;
+}
+
+@media (min-width: 768px) {
+  .cardSwipeHint {
+    font-size: 0.9rem;
+    opacity: 0.2;
+    top: 2px;
+  }
+}
+
+.leftSwipe,
+.rightSwipe {
+  user-select: none;
+}
+.carouselContainer {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.partnerScrollTrack {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  scroll-behavior: smooth;
+  overflow-x: auto;
+  padding: 20px 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.partnerScrollTrack::-webkit-scrollbar {
+  display: none;
 }
 
 }

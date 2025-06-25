@@ -6,8 +6,8 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.columns}>
-        {/* Column 1: Logo & Contact */}
-        <div className={styles.column}>
+        {/* Column 1: Logo & Hours */}
+        <div className={`${styles.column} ${styles.centeredColumn}`}>
           <Image
             src="/fort-logo.png"
             alt="The Fort Logo"
@@ -15,15 +15,17 @@ export default function Footer() {
             height={60}
             className={styles.logoImage}
           />
-          <p><span className={styles.label}>Phone:</span><br />519-736-4382</p>
-          <p><span className={styles.label}>Email:</span><br />info@thefortfuncenter.ca</p>
-          <div className={styles.social}>
-            <a href="https://www.facebook.com/thefortfuncenter" target="_blank" rel="noreferrer">
-              <Image src="/facebook-icon.png" alt="Facebook" width={32} height={32} />
-            </a>
-            <a href="https://www.instagram.com/thefortfuncenter/" target="_blank" rel="noreferrer">
-              <Image src="/instagram-icon.png" alt="Instagram" width={32} height={32} />
-            </a>
+          <div className={styles.hours}>
+            <h4>Hours of Operation</h4>
+            <ul>
+              <li>Sunday: 11am – 10pm</li>
+              <li>Monday: Closed</li>
+              <li>Tuesday: 3pm – 10pm</li>
+              <li>Wednesday: 3pm – 10pm</li>
+              <li>Thursday: 3pm – 10pm</li>
+              <li>Friday: 11am – 12am</li>
+              <li>Saturday: 11am – 12am</li>
+            </ul>
           </div>
         </div>
 
@@ -39,11 +41,20 @@ export default function Footer() {
             <p>📍 689 Texas Road, Amherstburg, ON</p>
             <p>📞 <a href="tel:5197364382">519-736-4382</a></p>
             <p>✉️ <a href="mailto:info@thefortfuncenter.ca">info@thefortfuncenter.ca</a></p>
-			<p>
- 			 📝 <a href="mailto:info@thefortfuncenter.ca?subject=Applying%20For%20A%20Position">
- 			   Apply To Work At The Fort
- 			 </a>
-			</p>
+            <p>
+              📝 <a href="mailto:info@thefortfuncenter.ca?subject=Applying%20For%20A%20Position">
+                Apply To Work At The Fort
+              </a>
+            </p>
+
+            <div className={styles.social}>
+              <a href="https://www.facebook.com/thefortfuncenter" target="_blank" rel="noreferrer">
+                <Image src="/facebook-icon.png" alt="Facebook" width={32} height={32} />
+              </a>
+              <a href="https://www.instagram.com/thefortfuncenter/" target="_blank" rel="noreferrer">
+                <Image src="/instagram-icon.png" alt="Instagram" width={32} height={32} />
+              </a>
+            </div>
           </div>
         </div>
 

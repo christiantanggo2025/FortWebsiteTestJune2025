@@ -2,11 +2,13 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './Navbar.module.css';
+import { FiMenu, FiX } from 'react-icons/fi';
 
 export default function Navbar() {
   const router = useRouter();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const scrollToSection = (id: string) => {
     if (typeof window === 'undefined') return;
@@ -16,6 +18,7 @@ export default function Navbar() {
     } else {
       router.push(`/#${id}`);
     }
+    setMenuOpen(false);
   };
 
   useEffect(() => {
@@ -44,84 +47,32 @@ export default function Navbar() {
           />
         </Link>
       </div>
-      <ul className={styles.navLinks}>
+
+      <div className={styles.hamburger} onClick={() => setMenuOpen(!menuOpen)}>
+        {menuOpen ? <FiX size={28} /> : <FiMenu size={28} />}
+      </div>
+
+      <ul className={`${styles.navLinks} ${menuOpen ? styles.mobileOpen : ''}`}>
         <li>
-          <a
-            href="#ourNextEvent"
-            className={styles.anchorLink}
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToSection('ourNextEvent');
-            }}
-          >
-            Events
-          </a>
+          <a href="#ourNextEvent" onClick={(e) => { e.preventDefault(); scrollToSection('ourNextEvent'); }}>Events</a>
         </li>
         <li>
-          <a
-            href="#foodAndDrink"
-            className={styles.anchorLink}
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToSection('foodAndDrink');
-            }}
-          >
-            Restaurant
-          </a>
+          <a href="#foodAndDrink" onClick={(e) => { e.preventDefault(); scrollToSection('foodAndDrink'); }}>Restaurant</a>
         </li>
         <li>
-          <a
-            href="#giftCards"
-            className={styles.anchorLink}
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToSection('giftCards');
-            }}
-          >
-            Gift Cards
-          </a>
+          <a href="#giftCards" onClick={(e) => { e.preventDefault(); scrollToSection('giftCards'); }}>Gift Cards</a>
         </li>
         <li>
-          <a
-            href="#attractions"
-            className={styles.anchorLink}
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToSection('attractions');
-            }}
-          >
-            Attractions
-          </a>
+          <a href="#attractions" onClick={(e) => { e.preventDefault(); scrollToSection('attractions'); }}>Attractions</a>
         </li>
         <li>
-          <a
-            href="https://www.harvesthosts.com/hosts/ontario/KzCZB2Ma054ISMtjnHWL?source=map"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Harvest Host
-          </a>
+          <a href="https://www.harvesthosts.com/hosts/ontario/KzCZB2Ma054ISMtjnHWL?source=map" target="_blank" rel="noopener noreferrer">Harvest Host</a>
         </li>
         <li>
-          <a
-            href="#footer"
-            className={styles.anchorLink}
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToSection('footer');
-            }}
-          >
-            Contact
-          </a>
+          <a href="#footer" onClick={(e) => { e.preventDefault(); scrollToSection('footer'); }}>Contact</a>
         </li>
         <li>
-          <a
-            href="https://bookeo.com/thefort-amherstburg"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Booking
-          </a>
+          <a href="https://bookeo.com/thefort-amherstburg" target="_blank" rel="noopener noreferrer">Booking</a>
         </li>
       </ul>
     </nav>

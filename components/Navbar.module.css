@@ -40,3 +40,38 @@
 .navLinks li a:hover {
   color: red;
 }
+
+.hamburger {
+  display: none;
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .navLinks {
+    display: none;
+    flex-direction: column;
+    background-color: black;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 100%;
+    padding: 20px;
+  }
+
+  .navLinks.mobileOpen {
+    display: flex;
+  }
+
+  .navLinks li {
+    margin-bottom: 12px;
+  }
+
+  .navLinks li a {
+    font-size: 18px;
+  }
+}

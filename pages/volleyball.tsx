@@ -187,7 +187,7 @@ export default function VolleyballPage() {
           </div>
 
           {/* Team Standings Card */}
-          <div className={styles.attractionCard} style={{ flex: '1 1 400px', maxWidth: '500px' }}>
+          <div className={styles.attractionCard} style={{ flex: '1 1 400px', maxWidth: '500px', color: 'white' }}>
             <h3>Team Standings</h3>
             {standings.length > 0 ? (
               <>
