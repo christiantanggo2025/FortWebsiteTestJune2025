@@ -64,10 +64,11 @@ export default function Events() {
             <div className={styles.dateBox}>
               <p>
                 {event.date
-                  ? new Date(event.date).toLocaleDateString('en-CA', {
+                  ? new Date(event.date + 'T00:00:00').toLocaleDateString('en-CA', {
                       year: 'numeric',
                       month: 'short',
                       day: 'numeric',
+                      timeZone: 'UTC',
                     })
                   : 'Date TBD'}
               </p>
