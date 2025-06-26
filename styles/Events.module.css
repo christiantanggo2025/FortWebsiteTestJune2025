@@ -103,4 +103,39 @@
   filter: invert(1); /* makes the calendar icon white */
   cursor: pointer;
 }
+.eventCard {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #333;
+}
+
+/* Side-by-side layout */
+.dateBox, .imageBox {
+  width: 50%;
+  box-sizing: border-box;
+  padding: 1rem;
+}
+
+/* Full-width content below */
+.textBox {
+  width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* Responsive tweak for mobile */
+@media (max-width: 768px) {
+  .dateBox, .imageBox {
+    width: 50%;
+    padding: 0.5rem;
+  }
+
+  .textBox {
+    padding: 1rem;
+  }
+}
 }
