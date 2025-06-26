@@ -39,6 +39,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  grid-area: date;
 }
 
 .imageBox {
@@ -104,13 +105,16 @@
   cursor: pointer;
 }
 .eventCard {
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "date image"
+    "text text";
+  gap: 1rem;
+  padding: 1rem;
   border: 1px solid #ccc;
   border-radius: 12px;
-  overflow: hidden;
-  background-color: #333;
+  background-color: #2a2a2a; /* your intended grey */
 }
 
 /* Side-by-side layout */
@@ -129,13 +133,17 @@
 
 /* Responsive tweak for mobile */
 @media (max-width: 768px) {
-  .dateBox, .imageBox {
-    width: 50%;
-    padding: 0.5rem;
+  .eventCard {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "date image"
+      "text text";
   }
+}
+
 
   .textBox {
     padding: 1rem;
+    grid-area: text;
   }
-}
 }
