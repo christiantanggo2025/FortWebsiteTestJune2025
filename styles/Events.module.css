@@ -17,73 +17,7 @@
   color: white;
 }
 
-.eventCard {
-  display: flex;
-  background-color: #333;
-  border-radius: 10px;
-  padding: 1rem;
-  margin-bottom: 2rem;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.dateBox {
-  flex: 0 0 15%;
-  background-color: teal;
-  color: white;
-  text-align: center;
-  padding: 1rem;
-  border-radius: 8px;
-  font-weight: bold;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  grid-area: date;
-}
-
-.imageBox {
-  flex: 0 0 45%;
-  border-radius: 8px;
-  overflow: hidden;
-  padding: 0 1rem;
-}
-
-.textBox {
-  flex: 0 0 40%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  box-sizing: border-box;
-  padding-left: 1rem;
-}
-
-.cancelled {
-  color: red;
-  text-decoration: line-through;
-}
-
-@media (max-width: 768px) {
-  .eventCard {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
-  .dateBox {
-    flex: 0 0 15%;
-    margin-bottom: 0;
-  }
-
-  .imageBox {
-    flex: 0 0 45%;
-    padding: 0 1rem;
-  }
-
-  .textBox {
-    flex: 0 0 40%;
-    padding-left: 1rem;
-  }
-  .dropdown label {
+.dropdown label {
   font-weight: bold;
   font-size: 1.2rem;
   color: white;
@@ -101,9 +35,10 @@
 }
 
 .dropdown input[type='month']::-webkit-calendar-picker-indicator {
-  filter: invert(1); /* makes the calendar icon white */
+  filter: invert(1);
   cursor: pointer;
 }
+
 .eventCard {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -114,36 +49,52 @@
   padding: 1rem;
   border: 1px solid #ccc;
   border-radius: 12px;
-  background-color: #2a2a2a; /* your intended grey */
+  background-color: #2a2a2a;
+  margin-bottom: 2rem;
 }
 
-/* Side-by-side layout */
-.dateBox, .imageBox {
-  width: 50%;
-  box-sizing: border-box;
+.dateBox {
+  grid-area: date;
+  background-color: teal;
+  color: white;
+  text-align: center;
   padding: 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Full-width content below */
+.imageBox {
+  grid-area: image;
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 0 1rem;
+}
+
 .textBox {
-  width: 100%;
+  grid-area: text;
   padding: 1rem;
   box-sizing: border-box;
 }
 
-/* Responsive tweak for mobile */
-@media (max-width: 768px) {
-  .eventCard {
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-      "date image"
-      "text text";
-  }
+.cancelled {
+  color: red;
+  text-decoration: line-through;
 }
 
+/* Responsive layout for mobile */
+@media (max-width: 768px) {
+  .imageBox {
+    display: none !important;
+  }
 
-  .textBox {
-    padding: 1rem;
-    grid-area: text;
+  .eventCard {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "date"
+      "text";
   }
 }
