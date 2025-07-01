@@ -1,5 +1,6 @@
 // pages/fort-app-privacy-policy.tsx
 import Head from 'next/head';
+import Link from 'next/link';
 
 export default function FortAppPrivacyPolicy() {
   return (
@@ -7,26 +8,29 @@ export default function FortAppPrivacyPolicy() {
       <Head>
         <title>Fort App Privacy Policy</title>
       </Head>
-      <main style={{
-        padding: '2rem',
-        maxWidth: '800px',
-        margin: '0 auto',
-        color: 'white',
-        lineHeight: '1.8',
-        fontSize: '1rem'
-      }}>
+      <main
+        style={{
+          padding: '2rem',
+          maxWidth: '800px',
+          margin: '0 auto',
+          color: 'white',
+          lineHeight: '1.8',
+          fontSize: '1rem'
+        }}
+      >
         <h1 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Privacy Policy – Fort App</h1>
-        <p><em>Effective Date: June 26, 2025</em></p>
-
         <p>
-          This Privacy Policy describes how The Fort Fun Center ("we", "our", "us") collects, uses, and protects personal information through The Fort App, available to players, captains, employees, managers, and owners of our recreational volleyball league.
+          <em>Effective Date: June 26, 2025</em>
         </p>
 
         <p>
-          By using The Fort App, you agree to the terms outlined below.
+          This Privacy Policy describes how The Fort Fun Center (referred to as &quot;we&quot;, &quot;our&quot;, &quot;us&quot;) collects, uses, and protects personal information through The Fort App. The app is available to players, captains, employees, managers, and owners of our recreational volleyball league.
         </p>
+
+        <p>By using The Fort App, you agree to the terms outlined below.</p>
 
         <h2 style={{ marginTop: '2rem' }}>1. Information We Collect</h2>
+
         <h3 style={{ marginTop: '1rem' }}>a. Personal Information</h3>
         <ul>
           <li>Full name</li>
@@ -122,7 +126,12 @@ export default function FortAppPrivacyPolicy() {
           This policy may change. Any updates will be posted at:
         </p>
         <p>
-          🔗 <a href="/fort-app-privacy-policy" style={{ color: 'lightblue' }}>https://thefortfuncenter.ca/fort-app-privacy-policy</a>
+          🔗{' '}
+          <Link href="/fort-app-privacy-policy" legacyBehavior>
+            <a style={{ color: 'lightblue' }}>
+              https://thefortfuncenter.ca/fort-app-privacy-policy
+            </a>
+          </Link>
         </p>
       </main>
     </>
