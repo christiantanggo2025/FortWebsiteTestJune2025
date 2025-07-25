@@ -324,13 +324,13 @@ export default function Home() {
                     height={100}
                   />
                   <h3>{partner.title}</h3>
-                  {partner.link ? (
-                    <a href={partner.link} target="_blank" rel="noopener noreferrer">
-                      <button>Visit</button>
-                    </a>
-                  ) : (
-                    <button onClick={() => alert(partner.alert)}>Learn More</button>
-                  )}
+                  <a
+                    href={partner.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <button>Visit</button>
+                  </a>
                 </div>
               ))}
             </div>
