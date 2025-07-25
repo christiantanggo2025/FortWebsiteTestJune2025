@@ -42,7 +42,7 @@ export default function Home() {
     { title: 'Rotary Club of Amherstburg', link: 'https://rotaryamherstburg.ca/', image: 'rotary.jpg' },
     { title: 'Nitro Pinball', link: 'https://nitropinball.com/', image: 'nitro.png' },
     { title: 'Motorcycle Spotters', link: 'https://www.facebook.com/groups/437648846705165', image: 'motorcycle.jpg' },
-    { title: 'Learn2ride', alert: 'Coming Soon', image: 'learn2ride.png' },
+    { title: 'Learn2ride', link: 'https://www.learn2ride.ca/', image: 'learn2ride.png' },
     { title: 'Southern Auto', link: 'https://www.instagram.com/519_carspotter_/?hl=en', image: 'southernauto.png' },
     { title: 'Windsor Comedy', link: 'https://www.facebook.com/brewingforcomedy/', image: 'windsorcomedy.jpg' },
     { title: 'Sprucewood Estate Winery', link: 'https://www.sprucewoodshores.com/', image: 'sprucewood.jpg' },
