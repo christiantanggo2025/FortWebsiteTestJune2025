@@ -18,13 +18,13 @@ export default function Footer() {
           <div className={styles.hours}>
             <h4>Hours of Operation</h4>
             <ul>
-              <li>Sunday: 11am – 10pm</li>
+              <li>Sunday: 11am – 9pm</li>
               <li>Monday: Closed</li>
-              <li>Tuesday: 3pm – 10pm</li>
-              <li>Wednesday: 3pm – 10pm</li>
-              <li>Thursday: 3pm – 10pm</li>
-              <li>Friday: 11am – 12am</li>
-              <li>Saturday: 11am – 12am</li>
+              <li>Tuesday: 3pm – 9pm</li>
+              <li>Wednesday: 3pm – 9pm</li>
+              <li>Thursday: 3pm – 9pm</li>
+              <li>Friday: 11am – 11pm</li>
+              <li>Saturday: 11am – 11pm</li>
             </ul>
           </div>
         </div>
