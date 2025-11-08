@@ -46,12 +46,6 @@ export default function MenuTabs() {
         <a href="/pdf/main-menu.pdf" target="_blank" rel="noopener noreferrer" style={buttonStyle}>
           Main Menu
         </a>
-        <a href="/pdf/pizza-menu.pdf" target="_blank" rel="noopener noreferrer" style={buttonStyle}>
-          Pizza Menu
-        </a>
-        <a href="/pdf/bike-night-menu.pdf" target="_blank" rel="noopener noreferrer" style={buttonStyle}>
-          Bike Night Menu
-        </a>
         <a href="/pdf/special-events-menu.pdf" target="_blank" rel="noopener noreferrer" style={buttonStyle}>
           Special Events Menu
         </a>
