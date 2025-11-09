@@ -42,10 +42,7 @@ export default function Home() {
     { title: 'Cross Roads Church', link: 'https://crossroadsfellowship.ca/', image: 'crossroads.jpg' },
     { title: 'Rotary Club of Amherstburg', link: 'https://rotaryamherstburg.ca/', image: 'rotary.jpg' },
     { title: 'Nitro Pinball', link: 'https://nitropinball.com/', image: 'nitro.png' },
-    { title: 'Motorcycle Spotters', link: 'https://www.facebook.com/groups/437648846705165', image: 'motorcycle.jpg' },
     { title: 'Learn2ride', link: 'https://www.learn2ride.ca/', image: 'learn2ride.png' },
-    { title: 'Southern Auto', link: 'https://www.instagram.com/519_carspotter_/?hl=en', image: 'southernauto.png' },
-    { title: 'Windsor Comedy', link: 'https://www.facebook.com/brewingforcomedy/', image: 'windsorcomedy.jpg' },
     { title: 'Sprucewood Estate Winery', link: 'https://www.sprucewoodshores.com/', image: 'sprucewood.jpg' },
     { title: 'Landshark Lager', link: 'https://www.landsharklager.com/AgeCheck.aspx?ReturnUrl=%2F', image: 'landshark.png' },
     { title: 'Slush Puppy Canada', link: 'https://slushpuppiecanada.com/', image: 'slushpuppy.png' },
@@ -269,9 +266,9 @@ export default function Home() {
             },
             {
               title: 'Comedy Nights',
-              image: '/comedy.jpg',
-              description: 'Live comedy hosted in partnership with Windsor Comedy.',
-              href: 'https://www.phogheads.ca/about'
+              image: '/comedy.png',
+              description: 'Live comedy hosted in partnership with CJ Erwin.',
+              href: 'https://www.facebook.com/cjbernauer'
             },
             {
               title: 'Fundraising With The Fort',
