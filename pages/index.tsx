@@ -46,7 +46,7 @@ export default function Home() {
     { title: 'Sprucewood Estate Winery', link: 'https://www.sprucewoodshores.com/', image: 'sprucewood.jpg' },
     { title: 'Landshark Lager', link: 'https://www.landsharklager.com/AgeCheck.aspx?ReturnUrl=%2F', image: 'landshark.png' },
     { title: 'Slush Puppy Canada', link: 'https://slushpuppiecanada.com/', image: 'slushpuppy.png' },
-    { title: 'Molson Coors', link: 'https://www.molsoncoors.com/en-CA/av?url=https://www.molsoncoors.com/', image: 'molsoncoors.jpg' }
+    { title: "Labatt's", link: 'https://www.labatt.com/en/age-gate', image: 'labatt.png' }
   ];
 
   const sections = [
