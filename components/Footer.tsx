@@ -20,7 +20,7 @@ export default function Footer() {
             <ul>
               <li>Sunday: 11am – 9pm</li>
               <li>Monday: Closed</li>
-              <li>Tuesday: 3pm – 9pm</li>
+              <li>Tuesday: Closed</li>
               <li>Wednesday: 3pm – 9pm</li>
               <li>Thursday: 3pm – 9pm</li>
               <li>Friday: 11am – 11pm</li>
