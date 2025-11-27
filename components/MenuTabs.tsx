@@ -46,6 +46,9 @@ export default function MenuTabs() {
         <a href="/pdf/main-menu.pdf" target="_blank" rel="noopener noreferrer" style={buttonStyle}>
           Main Menu
         </a>
+        <a href="/pdf/Event-Pre-order-Menu.pdf" target="_blank" rel="noopener noreferrer" style={buttonStyle}>
+          Pre-Order Event & Party Menu
+        </a>
       </div>
     </div>
   );
