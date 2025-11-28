@@ -49,6 +49,9 @@ export default function MenuTabs() {
         <a href="/pdf/Event-Pre-order-Menu.pdf" target="_blank" rel="noopener noreferrer" style={buttonStyle}>
           Pre-Order Event & Party Menu
         </a>
+        <a href="/pdf/TFFC-Pasta-Night-Website-Menu.jpg" target="_blank" rel="noopener noreferrer" style={buttonStyle}>
+          Wednesday All-You-Can-Eat Pasta Menu
+        </a>
       </div>
     </div>
   );
