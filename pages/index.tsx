@@ -16,7 +16,9 @@ export default function Home() {
   }
 
   const [nextEvent, setNextEvent] = useState<EventData | null>(null);
-  const [isPastaPopupOpen, setIsPastaPopupOpen] = useState(true);
+  // Show pasta popup only on Tuesday (2) and Wednesday (3)
+  const today = new Date().getDay();
+  const [isPastaPopupOpen, setIsPastaPopupOpen] = useState(today === 2 || today === 3);
   const carouselRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
