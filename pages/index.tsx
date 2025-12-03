@@ -17,8 +17,10 @@ export default function Home() {
 
   const [nextEvent, setNextEvent] = useState<EventData | null>(null);
   // Show pasta popup only on Tuesday (2) and Wednesday (3)
-  const today = new Date().getDay();
-  const [isPastaPopupOpen, setIsPastaPopupOpen] = useState(today === 2 || today === 3);
+  // Show rib popup only on Wednesday (3) and Thursday (4)
+  const dayOfWeek = new Date().getDay();
+  const [isPastaPopupOpen, setIsPastaPopupOpen] = useState(dayOfWeek === 2 || dayOfWeek === 3);
+  const [isRibPopupOpen, setIsRibPopupOpen] = useState(dayOfWeek === 3 || dayOfWeek === 4);
   const carouselRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -26,11 +28,11 @@ export default function Home() {
   }, []);
 
   const fetchNextEvent = async () => {
-    const today = new Date().toISOString();
+    const todayISO = new Date().toISOString();
     const { data, error } = await supabase
       .from('events')
       .select('*')
-      .gt('date', today)
+      .gt('date', todayISO)
       .order('date', { ascending: true })
       .limit(1)
       .single();
@@ -134,6 +136,30 @@ export default function Home() {
               <Image
                 src="/AYCE-Pasta.jpg"
                 alt="All You Can Eat Pasta"
+                width={600}
+                height={800}
+                style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {isRibPopupOpen && (
+        <div className={styles.noticeOverlay} role="dialog" aria-labelledby="rib-popup-title" aria-modal="true">
+          <div className={styles.noticeContainer}>
+            <button
+              type="button"
+              className={styles.noticeCloseButton}
+              onClick={() => setIsRibPopupOpen(false)}
+              aria-label="Close rib popup"
+            >
+              ×
+            </button>
+            <div className={styles.noticeBody} style={{ textAlign: 'center' }}>
+              <Image
+                src="/Rib-night.jpg"
+                alt="Rib Night"
                 width={600}
                 height={800}
                 style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
