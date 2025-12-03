@@ -16,6 +16,7 @@ export default function Home() {
   }
 
   const [nextEvent, setNextEvent] = useState<EventData | null>(null);
+  const [isPastaPopupOpen, setIsPastaPopupOpen] = useState(true);
   const carouselRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -115,6 +116,30 @@ export default function Home() {
       </Head>
 
       <Navbar />
+
+      {isPastaPopupOpen && (
+        <div className={styles.noticeOverlay} role="dialog" aria-labelledby="pasta-popup-title" aria-modal="true">
+          <div className={styles.noticeContainer}>
+            <button
+              type="button"
+              className={styles.noticeCloseButton}
+              onClick={() => setIsPastaPopupOpen(false)}
+              aria-label="Close pasta popup"
+            >
+              ×
+            </button>
+            <div className={styles.noticeBody} style={{ textAlign: 'center' }}>
+              <Image
+                src="/AYCE-Pasta.jpg"
+                alt="All You Can Eat Pasta"
+                width={600}
+                height={800}
+                style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
+              />
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className={styles.hero}>
         <h1>Welcome to The Fort</h1>
