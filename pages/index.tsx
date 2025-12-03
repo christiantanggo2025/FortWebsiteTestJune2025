@@ -16,16 +16,25 @@ export default function Home() {
   }
 
   const [nextEvent, setNextEvent] = useState<EventData | null>(null);
-  // Show pasta popup only on Tuesday (2) and Wednesday (3)
-  // Show rib popup only on Wednesday (3) and Thursday (4)
+  // Show pasta popup only on Tuesday (2) and Wednesday (3) - has priority
+  // Show rib popup only on Wednesday (3) and Thursday (4), but only if pasta popup is not open
   const dayOfWeek = new Date().getDay();
   const [isPastaPopupOpen, setIsPastaPopupOpen] = useState(dayOfWeek === 2 || dayOfWeek === 3);
-  const [isRibPopupOpen, setIsRibPopupOpen] = useState(dayOfWeek === 3 || dayOfWeek === 4);
+  // Rib popup: show on Thursday, or wait for pasta to close on Wednesday
+  const [isRibPopupOpen, setIsRibPopupOpen] = useState(dayOfWeek === 4);
   const carouselRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     fetchNextEvent();
   }, []);
+
+  // Show rib popup when pasta popup closes on Wednesday
+  useEffect(() => {
+    if (dayOfWeek === 3 && !isPastaPopupOpen) {
+      // On Wednesday, show rib popup after pasta closes
+      setIsRibPopupOpen(true);
+    }
+  }, [dayOfWeek, isPastaPopupOpen]);
 
   const fetchNextEvent = async () => {
     const todayISO = new Date().toISOString();
