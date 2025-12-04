@@ -20,7 +20,7 @@ export default function Home() {
   // Show rib popup only on Wednesday (3) and Thursday (4), but only if pasta popup is not open
   const dayOfWeek = new Date().getDay();
   const [isPastaPopupOpen, setIsPastaPopupOpen] = useState(dayOfWeek === 2 || dayOfWeek === 3);
-  // Rib popup: show on Thursday, or wait for pasta to close on Wednesday
+  // Rib popup: show on Thursday immediately, or wait for pasta to close on Wednesday
   const [isRibPopupOpen, setIsRibPopupOpen] = useState(dayOfWeek === 4);
   const carouselRef = useRef<HTMLDivElement>(null);
 
@@ -28,11 +28,28 @@ export default function Home() {
     fetchNextEvent();
   }, []);
 
-  // Show rib popup when pasta popup closes on Wednesday
+  // Ensure pasta popup is only shown on Tuesday and Wednesday
   useEffect(() => {
-    if (dayOfWeek === 3 && !isPastaPopupOpen) {
-      // On Wednesday, show rib popup after pasta closes
+    if (dayOfWeek !== 2 && dayOfWeek !== 3) {
+      setIsPastaPopupOpen(false);
+    }
+  }, [dayOfWeek]);
+
+  // Show rib popup when pasta closes on Wednesday, or show it on Thursday
+  useEffect(() => {
+    if (dayOfWeek === 3) {
+      // On Wednesday, show rib popup only after pasta closes
+      if (!isPastaPopupOpen) {
+        setIsRibPopupOpen(true);
+      } else {
+        setIsRibPopupOpen(false);
+      }
+    } else if (dayOfWeek === 4) {
+      // On Thursday, always show rib popup
       setIsRibPopupOpen(true);
+    } else if (dayOfWeek !== 3 && dayOfWeek !== 4) {
+      // On other days, hide rib popup
+      setIsRibPopupOpen(false);
     }
   }, [dayOfWeek, isPastaPopupOpen]);
 
